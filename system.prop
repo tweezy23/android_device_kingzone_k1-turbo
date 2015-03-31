@@ -2,9 +2,8 @@
 # system.prop for mt6592
 #
 service.adb.root=1
-ro.sf.lcd_density=240
+ro.sf.lcd_density=320
 wifi.interface=wlan0
-qemu.hw.mainkeys=0
 
 persist.mtk.aee.aed=on
 persist.radio.fd.counter=15

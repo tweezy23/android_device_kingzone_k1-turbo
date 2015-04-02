@@ -1,11 +1,18 @@
 # Build
 
-* features
+* Working
 
-  * wifi
-  * gsm (call in / call out / hangout)
-  * egl
-  * sound
+  * Wifi
+  * GSM (call in / call out / hangout)
+  * Audio
+  * OTG
+
+* Not Working
+
+  * Bluetooth
+  * NFC
+  * Sensors
+  * Camera
 
 * init
 

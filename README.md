@@ -1,18 +1,17 @@
 # Build
 
 * Working
-
   * Wifi
   * GSM (call in / call out / hangout)
   * Audio
   * OTG
 
 * Not Working
-
   * Bluetooth
   * NFC
   * Sensors
   * Camera
+
 
 * init
 

@@ -154,6 +154,15 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
+    # Bluetooth
+    mkdir /data/@btmtk 0770 bluetooth net_bt
+    chown bluetooth bluetooth /dev/hid-keyboard
+    chmod 0660 /dev/hid-keyboard
+    chown bluetooth bluetooth /dev/btn
+    chmod 0660 /dev/btn
+    #Use uinput's default permission
+    chown system net_bt_admin /dev/uinput
+
     mkdir /dev/radio 0770 radio radio
 
     start adbd
@@ -167,9 +176,16 @@ on post-fs
     chmod 0660 /dev/Vcodec
     chown system media /dev/Vcodec
 
+    # for ppp options file
+    mkdir /data/misc/ppp 0770 bluetooth net_bt
+
     exec /system/xbin/mknod /dev/stpwmt c 190 0
     exec /system/xbin/mknod /dev/stpgps c 191 0
     exec /system/xbin/mknod /dev/stpbt  c 192 0
+
+    # BT
+    chmod 0660 /dev/stpbt
+    chown bluetooth radio /dev/stpbt
 
     chmod 0660 /dev/stpwmt
     chown system system /dev/stpwmt

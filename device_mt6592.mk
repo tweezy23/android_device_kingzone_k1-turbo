@@ -36,7 +36,8 @@ PRODUCT_PACKAGES += \
     lib_driver_cmd_mt66xx
 
 PRODUCT_COPY_FILES += \
-    device/mediatek/mt6592/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
+    device/mediatek/mt6592/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
+    device/mediatek/mt6592/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl
 
 PRODUCT_COPY_FILES += \
     device/mediatek/mt6592/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc

@@ -6,10 +6,10 @@
   * GSM (call in / call out / hangout)
   * Audio
   * Sensors
+  * GPS
   * OTG
 
 * Not Working
-  * GPS
   * NFC
   * Camera
 

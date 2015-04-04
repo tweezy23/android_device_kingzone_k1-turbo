@@ -35,18 +35,6 @@ on init
     chown system system /dev/rtc0
     chmod 0660 /dev/rtc0
 
-    chown system system /dev/hwmsensor
-    chmod 0660 /dev/hwmsensor
-
-    chown system system /dev/msensor
-    chmod 0660 /dev/msensor
-
-    chown system system /dev/gsensor
-    chmod 0660 /dev/gsensor
-
-    chown radio system /dev/als_ps
-    chmod 0660 /dev/als_ps
-
     chown system media /dev/MJC
     chmod 0660 /dev/MJC
 
@@ -115,12 +103,60 @@ on init
     chown system media /dev/ebc
     chmod 0660 /dev/ebc
 
-    chmod 0660 /sys/devices/platform/msensor/driver/cpsopmode
-    chmod 0660 /sys/devices/platform/msensor/driver/cpsreptxy
-    chmod 0660 /sys/devices/platform/msensor/driver/cpsreptz
+    # Sensor
+    chmod 0666 /dev/hwmsensor
+    chmod 0666 /dev/msensor
+    chmod 0666 /dev/gsensor
+    chmod 0666 /dev/als_ps
+    chmod 0666 /dev/gyroscope
+    chmod 0660 /sys/class/misc/m_acc_misc/accenablenodata
+    chmod 0660 /sys/class/misc/m_acc_misc/accactive
+    chmod 0660 /sys/class/misc/m_acc_misc/accdelay
+    chmod 0660 /sys/class/misc/m_mag_misc/magactive
+    chmod 0660 /sys/class/misc/m_mag_misc/magdelay
+    chmod 0660 /sys/class/misc/m_mag_misc/magoactive
+    chmod 0660 /sys/class/misc/m_mag_misc/magodelay
+    chmod 0666 /sys/devices/platform/msensor/driver/cpsopmode
+    chmod 0666 /sys/devices/platform/msensor/driver/cpsreptxy
+    chmod 0666 /sys/devices/platform/msensor/driver/cpsreptz
     chmod 0660 /sys/devices/platform/gsensor/driver/cpsopmode
     chmod 0660 /sys/devices/platform/gsensor/driver/cpsrange
     chmod 0660 /sys/devices/platform/gsensor/driver/cpsbandwidth
+    chown system system /dev/hwmsensor
+    chown system system /dev/msensor
+    chown system system /dev/gsensor
+    chown radio system /dev/als_ps
+    chown system system /dev/gyroscope
+    chown system /sys/class/misc/m_acc_misc/accenablenodata
+    chown system /sys/class/misc/m_acc_misc/accactive
+    chown system /sys/class/misc/m_acc_misc/accdelay
+    chown system /sys/class/misc/m_mag_misc/magactive
+    chown system /sys/class/misc/m_mag_misc/magdelay
+    chown system /sys/class/misc/m_mag_misc/magoactive
+    chown system /sys/class/misc/m_mag_misc/magodelay
+
+    mkdir /data/amit/ 0770 system system
+    mkdir /data/misc/sensor 0774 system system
+    mkdir /data/misc/akmd 0770 system system
+    mkdir /data/misc/s62x 0771 compass compass
+    mkdir /data/acdapi/ 0770 system system
+    chmod 0666 /data/misc/acdapi/calib.dat
+    chmod 0666 /data/misc/acdapi/param.dat
+    chmod 0666 /data/misc/acdapi/sensors.dat
+    chown system /sys/class/input/input5/enable
+    chown system /sys/class/input/input5/delay
+    chown system /sys/class/input/input5/wake
+    chown system /sys/class/input/input3/enable
+    chown system /sys/class/input/input3/wake
+    chown system /sys/class/input/input4/offsets    
+    chown system /sys/devices/platform/msensor/driver/cpsopmode
+    chown system /sys/devices/platform/msensor/driver/cpsreptxy
+    chown system /sys/devices/platform/msensor/driver/cpsreptz
+    chown system /sys/devices/platform/gsensor/driver/cpsopmode
+    chown system /sys/devices/platform/gsensor/driver/cpsrange
+    chown system /sys/devices/platform/gsensor/driver/cpsbandwidth
+    mkdir	/data/data/mcube 0664 system system
+
     chmod 0664 /sys/devices/platform/mt-pmic/pmic_access_bank0
     chmod 0664 /sys/devices/platform/mt-pmic/pmic_access_bank1
     chmod 0664 /sys/devices/platform/mt6333-user/mt6333_access
@@ -383,6 +419,109 @@ service emcsmdlogger /system/bin/emcsmdlogger
     group system shell radio sdcard_rw inet sdcard_r media_rw ccci
     disabled
     oneshot
+
+#
+#sensor service (begin)
+#
+
+service msensord /system/bin/msensord
+    class main
+    oneshot
+
+service s62xd /system/bin/s62xd
+    disabled
+    user compass
+    group system
+    class main
+
+service ami304d /system/bin/ami304d
+    user system
+    group system
+    disabled
+    class main
+
+service memsicd /system/bin/memsicd
+     disabled
+    user system
+    group system
+    class main
+
+service memsicd3416x /system/bin/memsicd3416x
+     disabled
+	 user system
+    group system
+    class main
+
+service akmd8975 /system/bin/akmd8975
+    disabled
+    user system
+    group system
+    class main
+
+service akmd8963 /system/bin/akmd8963
+    disabled
+    user system
+    group system
+    class main
+
+service akmd09911 /system/bin/akmd09911
+    disabled
+    user system
+    group system
+    class main
+
+service bmm050d /system/bin/bmm050d
+    disabled
+    user system
+    group system
+    class main
+
+service bmm056d /system/bin/bmm056d
+    disabled
+    user system
+    group system
+    class main
+
+service mc6420d /system/bin/mc6420d
+    disabled
+    user system
+    group system
+    class main
+    
+service qmc5983d /system/bin/qmc5983d
+     disabled
+	 user system
+    group system
+    class main
+
+service orientationd /system/bin/orientationd
+    disabled
+    user system
+    group system input
+    class main
+
+service AcdApiDaemon /system/bin/AcdApiDaemon
+    disabled
+    user system
+    group system
+    class main
+
+service geomagneticd /system/bin/geomagneticd
+    disabled
+    user system
+    group system input
+    class main
+    
+service mc64xxd /system/bin/mc64xxd
+    disabled
+    user system
+    group system
+    class main
+    
+        
+#
+#sensor service (end)
+#
 
 #
 #

@@ -35,6 +35,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lib_driver_cmd_mt66xx
 
+PRODUCT_PACKAGES += \
+    libbt-vendor
+
 PRODUCT_COPY_FILES += \
     device/mediatek/mt6592/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
     device/mediatek/mt6592/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl
@@ -49,6 +52,21 @@ PRODUCT_COPY_FILES += \
     device/mediatek/mt6592/fstab.mt6592:root/fstab.mt6592 \
     device/mediatek/mt6592/init.mt6592.rc:root/init.mt6592.rc \
     $(LOCAL_KERNEL):kernel
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
+
+PRODUCT_COPY_FILES += \
+    device/mediatek/mt6592/media_codecs.xml:system/etc/media_codecs.xml \
+    device/mediatek/mt6592/media_profiles.xml:system/etc/media_profile.xml
 
 $(call inherit-product, build/target/product/full.mk)
 

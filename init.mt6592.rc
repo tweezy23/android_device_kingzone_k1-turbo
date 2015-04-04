@@ -72,30 +72,35 @@ on init
     
     chown system media /dev/uibc
     chmod 0660 /dev/uibc
-
     
-    
+    # JPEG
+    chmod 0444 /dev/mtk_jpeg
     chown system camera /dev/mtk_jpeg
-    chmod 0440 /dev/mtk_jpeg
-    chmod 0440 /dev/mtk_almk
-    chown system system /dev/mtk_disp
-    chmod 0440 /dev/mtk_disp
+
+    # Camera
+    chmod 0660 /dev/camera-sysram
+    chmod 0664 /dev/camera-isp
+    chmod 0660 /dev/camera-pipemgr
+    chmod 0660 /dev/kd_camera_hw
+    chmod 0660 /dev/kd_camera_flashlight
+    chmod 0660 /dev/kd_camera_hw_bus2
+    chmod 0660 /dev/FM50AF
+    chmod 0660 /dev/DW9714AF
+    chmod 0660 /dev/DW9718AF
+    chmod 0660 /dev/OV8825AF
+    chmod 0660 /dev/CAM_CAL_DRV
 
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
     chown system camera /dev/camera-pipemgr
-
     chown system camera /dev/kd_camera_hw
-    chmod 0660 /dev/kd_camera_hw
-
-    chown system camera /dev/kd_camera_flashlight    
-    chmod 0660 /dev/kd_camera_flashlight
-
+    chown system camera /dev/kd_camera_flashlight
     chown system camera /dev/kd_camera_hw_bus2
-    chmod 0660 /dev/kd_camera_hw_bus2
-
     chown system camera /dev/FM50AF
-    chmod 0660 /dev/FM50AF
+    chown system camera /dev/DW9714AF
+    chown system camera /dev/DW9718AF
+    chown system camera /dev/OV8825AF
+    chown system camera /dev/CAM_CAL_DRV
 
     chown system system /dev/RT_Monitor
     chmod 0600 /dev/RT_Monitor

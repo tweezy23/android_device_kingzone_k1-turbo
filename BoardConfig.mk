@@ -1,5 +1,3 @@
-USE_CAMERA_STUB := true
-
 # inherit from the proprietary version
 -include vendor/mediatek/mt6592/BoardConfigVendor.mk
 

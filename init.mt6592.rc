@@ -71,6 +71,30 @@ on init
     chown gps gps /sys/class/gpsdrv/gps/state
     chown gps gps /sys/class/gpsdrv/gps/pwrsave
     chown gps gps /sys/class/gpsdrv/gps/status
+
+    ## Thermal
+    #change permissions on thermal devices
+    chown root system /proc/mtktscpu/mtktscpu
+    chmod 0660 /proc/mtktscpu/mtktscpu
+    chown root system /proc/mtktsabb/mtktsabb
+    chmod 0660 /proc/mtktsabb/mtktsabb
+    chown root system /proc/mtktsbattery/mtktsbattery
+    chmod 0660 /proc/mtktsbattery/mtktsbattery
+    chown root system /proc/mtktspa/mtktspa
+    chmod 0660 /proc/mtktspa/mtktspa
+    chown root system /proc/mtktspmic/mtktspmic
+    chmod 0660 /proc/mtktspmic/mtktspmic
+    chown root system /proc/driver/mtk_thermal_monitor
+    chmod 0660 /proc/driver/mtk_thermal_monitor
+    chown root radio /proc/driver/mtm_scen_call
+    chmod 0660 /proc/driver/mtm_scen_call
+    chown system system /proc/driver/mtk_cl_sd_pid
+    chmod 0660 /proc/driver/mtk_cl_sd_pid
+    chown root system /proc/wmt_tm/wmt_tm
+    chown system system /proc/wmt_tm/tm_pid
+    chown system system /proc/wmt_tm/tx_thro
+    chown system system /proc/wmt_tm/wmt_val
+    chown system system /proc/wmt_tm/wfd_stat
     
     # JPEG
     chmod 0444 /dev/mtk_jpeg
@@ -348,6 +372,18 @@ service nvram_daemon /system/bin/nvram_daemon
 service NvRAMAgent /system/bin/nvram_agent_binder
      user system
      group system nvram
+
+service thermal_manager /system/bin/thermal_manager
+    user root
+    oneshot
+
+service thermal /system/bin/thermal
+    user system
+    group system
+
+service thermald /system/bin/thermald
+    user system
+    group system
 
 #
 # Modem

@@ -5,11 +5,12 @@
   * Bluetooth
   * GSM (call in / call out / hangout)
   * Audio
+  * Sensors
   * OTG
 
 * Not Working
+  * GPS
   * NFC
-  * Sensors
   * Camera
 
 

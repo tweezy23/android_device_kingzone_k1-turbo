@@ -4,6 +4,8 @@
 service.adb.root=1
 ro.sf.lcd_density=320
 wifi.interface=wlan0
+ro.nfc.port=I2C
+mtknfc.status.type=unknow
 
 persist.mtk.aee.aed=on
 persist.radio.fd.counter=15

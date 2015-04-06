@@ -7,10 +7,10 @@
   * Audio
   * Sensors
   * GPS
+  * NFC
   * OTG
 
 * Not Working
-  * NFC
   * Camera
 
 

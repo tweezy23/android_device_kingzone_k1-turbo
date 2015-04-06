@@ -241,6 +241,11 @@ on post-fs-data
 
     mkdir /dev/radio 0770 radio radio
 
+    # NFC
+    chmod 0666 /dev/mt6605
+    chown system system /dev/mt6605
+    mkdir /data/nfc_socket 0771 nfc radio
+
     start adbd
 
 on post-fs

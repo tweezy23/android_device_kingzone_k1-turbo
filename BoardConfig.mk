@@ -46,7 +46,10 @@ BOARD_MKBOOTIMG_ARGS := --board 1419997733
 
 TARGET_KMODULES := true
 
+# Graphics
 BOARD_EGL_CFG := device/mediatek/mt6592/egl.cfg
+USE_OPENGL_RENDERER := true
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 BOARD_RIL_CLASS := ../../../device/mediatek/mt6592/ril/
 

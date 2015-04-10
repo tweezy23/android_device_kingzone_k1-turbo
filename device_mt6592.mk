@@ -20,8 +20,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.mt6592
 
-PRODUCT_PACKAGES += \
-    libmtkrilw
+#PRODUCT_PACKAGES += \
+#    libmtkrilw \
+#    libmtkrilwmd2
 
 PRODUCT_PACKAGES += \
     audio.r_submix.default
@@ -43,14 +44,14 @@ PRODUCT_COPY_FILES += \
     device/mediatek/mt6592/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl
 
 PRODUCT_COPY_FILES += \
-    device/mediatek/mt6592/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc
-
-PRODUCT_COPY_FILES += \
     device/mediatek/mt6592/audio/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
     device/mediatek/mt6592/fstab.mt6592:root/fstab.mt6592 \
     device/mediatek/mt6592/init.mt6592.rc:root/init.mt6592.rc \
+    device/mediatek/mt6592/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc \
+    device/mediatek/mt6592/init.mt6592.usb.rc:root/init.mt6592.usb.rc \
+    device/mediatek/mt6592/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \

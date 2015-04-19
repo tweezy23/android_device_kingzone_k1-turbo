@@ -1,3 +1,5 @@
+USE_CAMERA_STUB := true
+
 # inherit from the proprietary version
 -include vendor/mediatek/mt6592/BoardConfigVendor.mk
 
@@ -27,18 +29,10 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1468006400
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 5452595200
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-BOARD_SEPOLICY_DIRS := \
-       device/mediatek/mt6592/sepolicy
-
-BOARD_SEPOLICY_UNION := \
-       device.te \
-       app.te \
-       system.te \
-       file_contexts
-
 TARGET_PREBUILT_KERNEL := device/mediatek/mt6592/kernel
-TARGET_RECOVERY_FSTAB := device/mediatek/mt6592/recovery.fstab
 
+# Recovery
+TARGET_RECOVERY_FSTAB := device/mediatek/mt6592/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 BOARD_CUSTOM_BOOTIMG_MK := device/mediatek/mt6592/bootimg.mk
@@ -46,19 +40,28 @@ BOARD_MKBOOTIMG_ARGS := --board 1419997733
 
 TARGET_KMODULES := true
 
-COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK -DNEEDS_VECTORIMPL_SYMBOLS
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+#COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK -DNEEDS_VECTORIMPL_SYMBOLS
+#TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # EGL
 BOARD_EGL_CFG := device/mediatek/mt6592/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
+# HWComposer
+BOARD_USES_HWCOMPOSER := true
+BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
+
+# Enable WEBGL in WebKit
+ENABLE_WEBGL := true
+
+# RIL
 BOARD_RIL_CLASS := ../../../device/mediatek/mt6592/ril/
 
 BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_CONNECTIVITY_MODULE := conn_soc
 
+# Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
@@ -69,7 +72,17 @@ WIFI_DRIVER_FW_PATH_STA:=STA
 WIFI_DRIVER_FW_PATH_AP:=AP
 WIFI_DRIVER_FW_PATH_P2P:=P2P
 
+# Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/mediatek/mt6592/bluetooth
+
+BOARD_SEPOLICY_DIRS := \
+       device/mediatek/mt6592/sepolicy
+
+BOARD_SEPOLICY_UNION := \
+       device.te \
+       app.te \
+       system.te \
+       file_contexts

@@ -48,10 +48,6 @@
 #define LOG_TAG "RIL"
 #include <utils/Log.h>
 
-#define RIL_REQUEST_MTK_BASE 2000
-
-#define RIL_REQUEST_DUAL_SIM_MODE_SWITCH (RIL_REQUEST_MTK_BASE + 12)
-
 #define RIL_CMD_PROXY_5     RIL_CMD_4 
 #define RIL_CMD_PROXY_1     RIL_CMD_3
 #define RIL_CMD_PROXY_2     RIL_CMD_2
@@ -123,22 +119,6 @@ typedef struct {
     int (*QueryMyProxyIdByThread)();
 } RIL_EnvMTK;
 
-typedef struct {
-    int requestNumber;
-    void (*dispatchFunction) (struct Parcel *p, struct RequestInfo *pRI);
-    int(*responseFunction) (struct Parcel *p, void *response, size_t responselen);
-    RILChannelId proxyId;
-} CommandInfo;
-
-typedef struct RequestInfo {
-    int32_t token;      //this is not RIL_Token
-    CommandInfo *pCI;
-    struct RequestInfo *p_next;
-    char cancelled;
-    char local;         // responses to local commands do not go back to command process
-    RILChannelId cid;
-} RequestInfo;
-
 static RIL_EnvMTK s_rilenvmtk;
 
 void (*OnUnsolicitedResponse)(int unsolResponse, const void *data, size_t datalen);
@@ -153,24 +133,7 @@ RIL_RadioState onStateRequest()
   return s_callbacksmtk.onStateRequest(MTK_RIL_SOCKET_1, 0);
 }
 
-static void
-issueLocalRequest(int request, void *data, int len) {
-    RequestInfo *pRI;
-    int ret;
-
-    pRI = (RequestInfo *)calloc(1, sizeof(RequestInfo));
-
-    pRI->local = 1;
-    pRI->token = 0xffffffff;        // token is not used in this context
-    pRI->pCI = 0;//(CommandInfo *)calloc(1, sizeof(CommandInfo));
-//    pRI->pCI->requestNumber = request;
-//    pRI->pCI->proxyId = RIL_CMD_PROXY_1;
-    pRI->p_next = 0;
-
-    s_callbacks.onRequest(request, data, len, pRI);
-}
-
-int register_socket(const char* name)
+int android_register_control_socket(const char* name)
 {
    int sfd;
    struct sockaddr_un my_addr;
@@ -194,6 +157,11 @@ int register_socket(const char* name)
         return -1;
    }
 
+   return android_set_control_socket(name, sfd);
+}
+
+int android_set_control_socket(const char* name, int sfd)
+{
    char key[64] = {0};
    char value[64] = {0};
 
@@ -201,12 +169,12 @@ int register_socket(const char* name)
    strncat(key, name, sizeof(key) - 1);
 
    snprintf(value, sizeof(value), "%d", sfd);
+
    if(setenv(key, value, 1) == -1) {
      RLOGD("register control socket FAIL %s %s: %s\n", key, value, strerror(errno));
      return -1;
    }
 
-   RLOGD("register control socket %s %s\n", key, value);
    return sfd;
 }
 
@@ -271,21 +239,23 @@ const RIL_RadioFunctions *RIL_Init(const struct RIL_Env *env, int argc, char **a
 
     s_callbacks.onStateRequest = onStateRequest;
 
-    register_socket("rild2");
-    register_socket("rild-atci");
-    register_socket("rild-oem");
-    register_socket("rild-mtk-ut");
-    register_socket("rild-mtk-ut-2");
-    register_socket("rild-mtk-modem");
+    int rild = android_get_control_socket("rild");
+    int rild2 = android_register_control_socket("rild2");
+
+    android_set_control_socket("rild", rild2);
+    android_set_control_socket("rild2", rild);
+
+    android_register_control_socket("rild-atci");
+    android_register_control_socket("rild-oem");
+    android_register_control_socket("rild-mtk-ut");
+    android_register_control_socket("rild-mtk-ut-2");
+    android_register_control_socket("rild-mtk-modem");
 
     rilRegister(&s_callbacksmtk);
 
-    {
-      int data = 2;
-      issueLocalRequest(RIL_REQUEST_DUAL_SIM_MODE_SWITCH, &data, sizeof(data));
-    }
-
     // disable libril RIL_register call
     return NULL;
+
     //return &s_callbacks;
 }
+

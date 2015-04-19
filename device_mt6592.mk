@@ -20,9 +20,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.mt6592
 
-#PRODUCT_PACKAGES += \
-#    libmtkrilw \
-#    libmtkrilwmd2
+PRODUCT_PACKAGES += \
+    libmtkrilw
 
 PRODUCT_PACKAGES += \
     audio.r_submix.default

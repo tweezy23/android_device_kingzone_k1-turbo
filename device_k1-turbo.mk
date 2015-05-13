@@ -46,12 +46,12 @@ PRODUCT_COPY_FILES += \
     device/kingzone/k1_turbo/audio/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
-    device/kingzone/k1_turbo/fstab.k1-turbo:root/fstab.k1-turbo \
-    device/kingzone/k1_turbo/init.k1-turbo.rc:root/init.k1-turbo.rc \
-    device/kingzone/k1_turbo/init.recovery.k1-turbo.rc:root/init.recovery.k1-turbo.rc \
-    device/kingzone/k1_turbo/init.k1-turbo.usb.rc:root/init.k1-turbo.usb.rc \
+    device/kingzone/k1_turbo/fstab.mt6592:root/fstab.mt6592 \
+    device/kingzone/k1_turbo/init.mt6592.rc:root/init.mt6592.rc \
+    device/kingzone/k1_turbo/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc \
+    device/kingzone/k1_turbo/init.mt6592.usb.rc:root/init.mt6592.usb.rc \
     device/kingzone/k1_turbo/twrp.fstab:recovery/root/etc/twrp.fstab \
-    device/kingzone/k1_turbo/ueventd.k1-turbo.rc:root/ueventd.k1-turbo.rc \
+    device/kingzone/k1_turbo/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \

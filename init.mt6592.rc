@@ -1,4 +1,4 @@
-import init.k1-turbo.usb.rc
+import init.mt6592.usb.rc
 #import init.modem.rc
 
 on init
@@ -322,7 +322,7 @@ on fs
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
 
-    mount_all /fstab.k1-turbo
+    mount_all /fstab.mt6592
     #setprop ro.crypto.fuse_sdcard true
 
     write /proc/bootprof "INIT:NAND:Mount_END"

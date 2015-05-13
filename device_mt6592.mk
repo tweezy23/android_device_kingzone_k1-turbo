@@ -50,6 +50,7 @@ PRODUCT_COPY_FILES += \
     device/mediatek/mt6592/init.mt6592.rc:root/init.mt6592.rc \
     device/mediatek/mt6592/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc \
     device/mediatek/mt6592/init.mt6592.usb.rc:root/init.mt6592.usb.rc \
+    device/mediatek/mt6592/twrp.fstab:recovery/root/etc/twrp.fstab \
     device/mediatek/mt6592/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
     $(LOCAL_KERNEL):kernel
 
@@ -61,8 +62,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml
 
 PRODUCT_COPY_FILES += \
     device/mediatek/mt6592/media_codecs.xml:system/etc/media_codecs.xml \

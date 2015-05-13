@@ -1,5 +1,3 @@
-USE_CAMERA_STUB := true
-
 # inherit from the proprietary version
 -include vendor/mediatek/mt6592/BoardConfigVendor.mk
 
@@ -31,10 +29,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/mediatek/mt6592/kernel
 
-# Recovery
-TARGET_RECOVERY_FSTAB := device/mediatek/mt6592/recovery.fstab
-BOARD_HAS_NO_SELECT_BUTTON := true
-
 BOARD_CUSTOM_BOOTIMG_MK := device/mediatek/mt6592/bootimg.mk
 BOARD_MKBOOTIMG_ARGS := --board 1419997733
 
@@ -48,9 +42,11 @@ BOARD_EGL_CFG := device/mediatek/mt6592/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
-# HWComposer
-BOARD_USES_HWCOMPOSER := true
-BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
+# MTK Hardware
+BOARD_HAS_MTK_HARDWARE := true
+MTK_HARDWARE := true
+COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE
+COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
@@ -61,7 +57,7 @@ BOARD_RIL_CLASS := ../../../device/mediatek/mt6592/ril/
 BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_CONNECTIVITY_MODULE := conn_soc
 
-# Wifi
+# WIFI
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
@@ -77,6 +73,25 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/mediatek/mt6592/bluetooth
+
+# CWM
+TARGET_RECOVERY_FSTAB := device/mediatek/mt6592/recovery.fstab
+BOARD_HAS_NO_SELECT_BUTTON := true
+
+# TWRP
+RECOVERY_VARIANT=twrp
+DEVICE_RESOLUTION := 1080x1920
+BOARD_HAS_LARGE_FILESYSTEM := true
+TW_NO_USB_STORAGE := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 255
+#TW_CUSTOM_BATTERY_PATH := /sys/devices/platform/mt6320-battery/power_supply/battery
+TW_INTERNAL_STORAGE_PATH := "/emmc"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 
 BOARD_SEPOLICY_DIRS := \
        device/mediatek/mt6592/sepolicy

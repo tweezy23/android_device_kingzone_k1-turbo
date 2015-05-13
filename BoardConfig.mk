@@ -1,5 +1,5 @@
 # inherit from the proprietary version
--include vendor/mediatek/mt6592/BoardConfigVendor.mk
+-include vendor/kingzone/k1-turbo/BoardConfigVendor.mk
 
 TARGET_BOARD_PLATFORM := mt6592
 TARGET_NO_BOOTLOADER := true
@@ -27,9 +27,9 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1468006400
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 5452595200
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/mediatek/mt6592/kernel
+TARGET_PREBUILT_KERNEL := device/kingzone/k1-turbo/kernel
 
-BOARD_CUSTOM_BOOTIMG_MK := device/mediatek/mt6592/bootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/kingzone/k1-turbo/bootimg.mk
 BOARD_MKBOOTIMG_ARGS := --board 1419997733
 
 TARGET_KMODULES := true
@@ -38,7 +38,7 @@ TARGET_KMODULES := true
 #TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # EGL
-BOARD_EGL_CFG := device/mediatek/mt6592/egl.cfg
+BOARD_EGL_CFG := device/kingzone/k1-turbo/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
@@ -52,7 +52,7 @@ BOARD_HAS_MTK_HARDWARE := true
 ENABLE_WEBGL := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/mediatek/mt6592/ril/
+BOARD_RIL_CLASS := ../../../device/kingzone/k1-turbo/ril/
 
 BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_CONNECTIVITY_MODULE := conn_soc
@@ -72,10 +72,10 @@ WIFI_DRIVER_FW_PATH_P2P:=P2P
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/mediatek/mt6592/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/kingzone/k1-turbo/bluetooth
 
 # CWM
-TARGET_RECOVERY_FSTAB := device/mediatek/mt6592/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/kingzone/k1-turbo/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # TWRP
@@ -94,7 +94,7 @@ TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 
 BOARD_SEPOLICY_DIRS := \
-       device/mediatek/mt6592/sepolicy
+       device/kingzone/k1-turbo/sepolicy
 
 BOARD_SEPOLICY_UNION := \
        device.te \

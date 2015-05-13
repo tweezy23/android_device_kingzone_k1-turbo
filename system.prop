@@ -1,5 +1,5 @@
 #
-# system.prop for mt6592
+# system.prop for kingzone k1 turbo
 #
 service.adb.root=1
 ro.sf.lcd_density=320

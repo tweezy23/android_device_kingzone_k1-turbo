@@ -22,17 +22,17 @@
         
         # source build/envsetup.sh
         
-        # lunch cm_mt6592-eng
+        # lunch cm_k1-turbo-eng
 
 * recoveries
 
-        # . build/tools/device/makerecoveries.sh cm_mt6592-eng
+        # . build/tools/device/makerecoveries.sh cm_k1-turbo-eng
     
         # mka bootimage
 
 * full build
 
-        # brunch cm_mt6592-eng
+        # brunch cm_k1-turbo-eng
 
 # MTK
 

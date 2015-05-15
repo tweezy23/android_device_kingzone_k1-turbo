@@ -34,8 +34,8 @@ BOARD_MKBOOTIMG_ARGS := --board 1419997733
 
 TARGET_KMODULES := true
 
-#COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK -DNEEDS_VECTORIMPL_SYMBOLS
-#TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # EGL
 BOARD_EGL_CFG := device/kingzone/k1_turbo/egl.cfg
@@ -47,9 +47,6 @@ BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE
 COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
-
-# Enable WEBGL in WebKit
-ENABLE_WEBGL := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/kingzone/k1_turbo/ril/
@@ -100,4 +97,5 @@ BOARD_SEPOLICY_UNION := \
        device.te \
        app.te \
        system.te \
+       netd.te \
        file_contexts

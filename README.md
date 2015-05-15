@@ -1,17 +1,20 @@
 # Build
 
 * Working
+  * RIL (Second SIM)
   * Wifi
   * Bluetooth
-  * GSM (call in / call out / hangout)
   * Audio
   * Sensors
+  * Camera (picture recording)
   * GPS
   * NFC
   * OTG
 
 * Not Working
-  * Camera
+  * Camera (video recording)
+  * Video en/decoding
+  * Dual SIM (first SIM doesn't work)
 
 
 * init
@@ -22,17 +25,17 @@
         
         # source build/envsetup.sh
         
-        # lunch cm_k1-turbo-eng
+        # lunch cm_k1_turbo-eng
 
 * recoveries
 
-        # . build/tools/device/makerecoveries.sh cm_k1-turbo-eng
+        # . build/tools/device/makerecoveries.sh cm_k1_turbo-eng
     
         # mka bootimage
 
 * full build
 
-        # brunch cm_k1-turbo-eng
+        # brunch cm_k1_turbo-eng
 
 # MTK
 

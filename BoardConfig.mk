@@ -29,8 +29,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/kingzone/k1_turbo/kernel
 
-BOARD_CUSTOM_BOOTIMG_MK := device/kingzone/k1_turbo/bootimg.mk
-BOARD_MKBOOTIMG_ARGS := --board 1419997733
+# mkimage to append headers
+# TARGET_MKIMAGE := device/kingzone/k1_turbo/mkimage
+# TARGET_USE_BUILT_BOOTIMAGE := true
 
 TARGET_KMODULES := true
 
@@ -49,7 +50,7 @@ COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE
 COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/kingzone/k1_turbo/ril/
+# BOARD_RIL_CLASS := ../../../device/kingzone/k1_turbo/ril/
 
 BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_CONNECTIVITY_MODULE := conn_soc
@@ -76,7 +77,7 @@ TARGET_RECOVERY_FSTAB := device/kingzone/k1_turbo/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # TWRP
-RECOVERY_VARIANT=twrp
+#RECOVERY_VARIANT=twrp
 DEVICE_RESOLUTION := 1080x1920
 BOARD_HAS_LARGE_FILESYSTEM := true
 TW_NO_USB_STORAGE := true

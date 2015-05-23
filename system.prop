@@ -12,7 +12,6 @@ persist.radio.fd.counter=15
 persist.radio.fd.off.counter=5
 persist.radio.fd.r8.counter=15
 persist.radio.fd.off.r8.counter=5
-persist.radio.multisim.config=dsds
 fmradio.driver.enable=1
 ril.radiooff.poweroffMD=0
 

@@ -15,7 +15,7 @@
   * Camera
   * Video en/decoding
 
-* Build
+* Compilation
 
         # repo init -u git://github.com/CyanogenMod/android.git -b cm-12.0
         

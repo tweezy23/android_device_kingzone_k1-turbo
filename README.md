@@ -15,24 +15,13 @@
   * Camera
   * Video en/decoding
 
-* init
-
+* Build
         # repo init -u git://github.com/CyanogenMod/android.git -b cm-11.0
         
         # repo sync
         
         # source build/envsetup.sh
         
-        # lunch cm_k1_turbo-eng
-
-* recoveries
-
-        # . build/tools/device/makerecoveries.sh cm_k1_turbo-eng
-    
-        # mka bootimage
-
-* full build
-
         # brunch cm_k1_turbo-eng
 
 # MTK

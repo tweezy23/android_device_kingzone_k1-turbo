@@ -1,18 +1,19 @@
 # Build
 
 * Working
+  * RIL (Second SIM)
   * Wifi
   * Bluetooth
   * Audio
+  * Sensors
+  * GPS (not completely tested)
+  * NFC
   * OTG
 
 * Not Working
-  * RIL (First and Second SIM)
-  * Sensors
+  * Dual SIM (first SIM doesn't work)
   * Camera
   * Video en/decoding
-  * GPS
-  * NFC
 
 * init
 

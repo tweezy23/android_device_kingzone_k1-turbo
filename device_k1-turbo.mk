@@ -33,25 +33,25 @@ PRODUCT_PACKAGES += \
     audio_policy.default
 
 PRODUCT_PACKAGES += \
-    lib_driver_cmd_mt66xx
-
-PRODUCT_PACKAGES += \
     libbt-vendor
 
+PRODUCT_PACKAGES += \
+    gsm0710muxd
+
 PRODUCT_COPY_FILES += \
-    device/kingzone/k1_turbo/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-    device/kingzone/k1_turbo/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl
+    device/kingzone/k1_turbo/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
+    device/kingzone/k1_turbo/configs/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl
 
 PRODUCT_COPY_FILES += \
     device/kingzone/k1_turbo/audio/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
-    device/kingzone/k1_turbo/fstab.mt6592:root/fstab.mt6592 \
-    device/kingzone/k1_turbo/init.mt6592.rc:root/init.mt6592.rc \
-    device/kingzone/k1_turbo/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc \
-    device/kingzone/k1_turbo/init.mt6592.usb.rc:root/init.mt6592.usb.rc \
-    device/kingzone/k1_turbo/twrp.fstab:recovery/root/etc/twrp.fstab \
-    device/kingzone/k1_turbo/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
+    device/kingzone/k1_turbo/rootdir/fstab.mt6592:root/fstab.mt6592 \
+    device/kingzone/k1_turbo/rootdir/init.mt6592.rc:root/init.mt6592.rc \
+    device/kingzone/k1_turbo/rootdir/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc \
+    device/kingzone/k1_turbo/rootdir/init.mt6592.usb.rc:root/init.mt6592.usb.rc \
+    device/kingzone/k1_turbo/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab \
+    device/kingzone/k1_turbo/rootdir/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
@@ -68,8 +68,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml
 
 PRODUCT_COPY_FILES += \
-    device/kingzone/k1_turbo/media_codecs.xml:system/etc/media_codecs.xml \
-    device/kingzone/k1_turbo/media_profiles.xml:system/etc/media_profile.xml
+    device/kingzone/k1_turbo/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    device/kingzone/k1_turbo/configs/media_profiles.xml:system/etc/media_profile.xml
 
 # NFC
 PRODUCT_PACKAGES += \

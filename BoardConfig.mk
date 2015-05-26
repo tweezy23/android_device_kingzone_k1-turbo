@@ -28,10 +28,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 5452595200
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/kingzone/k1_turbo/kernel
-
-# mkimage to append headers
-# TARGET_MKIMAGE := device/kingzone/k1_turbo/mkimage
-# TARGET_USE_BUILT_BOOTIMAGE := true
+BOARD_CUSTOM_BOOTIMG_MK := device/kingzone/k1_turbo/bootimg.mk
 
 TARGET_KMODULES := true
 
@@ -39,7 +36,7 @@ COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # EGL
-BOARD_EGL_CFG := device/kingzone/k1_turbo/egl.cfg
+BOARD_EGL_CFG := device/kingzone/k1_turbo/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
@@ -50,7 +47,7 @@ COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE
 COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 
 # RIL
-# BOARD_RIL_CLASS := ../../../device/kingzone/k1_turbo/ril/
+BOARD_RIL_CLASS := ../../../device/kingzone/k1_turbo/ril/
 
 BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_CONNECTIVITY_MODULE := conn_soc
@@ -73,7 +70,7 @@ BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/kingzone/k1_turbo/bluetooth
 
 # CWM
-TARGET_RECOVERY_FSTAB := device/kingzone/k1_turbo/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/kingzone/k1_turbo/rootdir/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # TWRP
@@ -90,6 +87,8 @@ TW_INTERNAL_STORAGE_PATH := "/emmc"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
 BOARD_SEPOLICY_DIRS := \
        device/kingzone/k1_turbo/sepolicy

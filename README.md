@@ -1,19 +1,21 @@
 # Build
 
 * Working
-  * RIL (Second SIM)
+  * RIL (First and Second SIM)
   * Wifi
   * Bluetooth
   * Audio
   * Sensors
+  * Camera (photo recording)
   * GPS (not completely tested)
   * NFC
   * OTG
 
 * Not Working
-  * Dual SIM (first SIM doesn't work)
-  * Camera
+  * Dual SIM (Using both sim's at the same time isn't working.)
+  * Video recording
   * Video en/decoding
+  * MTP (ADB is working)
 
 * Compilation
 

@@ -248,10 +248,12 @@ const RIL_RadioFunctions *RIL_Init(const struct RIL_Env *env, int argc, char **a
     int rild2 = android_register_control_socket("rild2");
 
     int simId = 1;
-    FILE * f = fopen("/data/local/sim_setting", "r");
-    fscanf(f, "%d", &simId);
-    if (simId != 1 && simId != 2) {
-        simId = 1;
+    FILE * file = fopen("/data/local/sim_setting", "r");
+    if (file != NULL) {
+        fscanf(file, "%d", &simId);
+        if (simId != 1 && simId != 2) {
+            simId = 1;
+        }
     }
     RLOGD("SIM ID: %d", simId);
 

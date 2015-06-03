@@ -135,6 +135,11 @@ RIL_RadioState onStateRequest()
 
 int android_register_control_socket(const char* name)
 {
+   int status = android_get_control_socket(name);
+   if (status != 1) {
+      return android_set_control_socket(name, status);
+   }
+
    int sfd;
    struct sockaddr_un my_addr;
 
@@ -242,8 +247,15 @@ const RIL_RadioFunctions *RIL_Init(const struct RIL_Env *env, int argc, char **a
     int rild = android_get_control_socket("rild");
     int rild2 = android_register_control_socket("rild2");
 
-    android_set_control_socket("rild", rild2);
-    android_set_control_socket("rild2", rild);
+    int simId = 2;
+    FILE * f = fopen("/data/local/sim_setting", "r");
+    fscanf(f, "%d", &simId);
+    RLOGD("SIM ID: %d", simId);
+
+    if (simId == 2) {
+        android_set_control_socket("rild", rild2);
+        android_set_control_socket("rild2", rild);
+    }
 
     android_register_control_socket("rild-atci");
     android_register_control_socket("rild-oem");

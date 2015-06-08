@@ -12,8 +12,7 @@
   * OTG
 
 * Not Working
-  * Dual SIM (Using both sim's at the same time isn't working.)
-  * 3G on second SIM
+  * Dual SIM (Maybe working. Not tested.)
   * Video recording
   * Video en/decoding
   * MTP (ADB is working)

@@ -33,13 +33,7 @@ PRODUCT_PACKAGES += \
     libbt-vendor
 
 PRODUCT_PACKAGES += \
-    libmtkrilw
-
-PRODUCT_PACKAGES += \
     gsm0710muxd
-
-PRODUCT_PACKAGES += \
-    SIMSwitcher
 
 PRODUCT_COPY_FILES += \
     device/kingzone/k1_turbo/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \

@@ -35,7 +35,7 @@ Few words about mtk related binaries, services and migration peculiarities.
 
 Services requires root:
 
-`system/core/rootdir/init.rd`
+`system/core/rootdir/init.rc`
 
   * surfaceflinger depends on sched_setscheduler calls, unable to change process priority from 'system' user (default user 'system')
 

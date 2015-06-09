@@ -35,6 +35,9 @@ TARGET_KMODULES := true
 COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
+# Disable memcpy opt (for audio libraries)
+TARGET_CPU_MEMCPY_OPT_DISABLE := true
+
 # EGL
 BOARD_EGL_CFG := device/kingzone/k1_turbo/configs/egl.cfg
 USE_OPENGL_RENDERER := true

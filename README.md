@@ -1,7 +1,7 @@
 # Build
 
 * Working
-  * RIL (First and Second SIM)
+  * Dual SIM
   * Wifi
   * Bluetooth
   * Audio
@@ -12,10 +12,8 @@
   * OTG
 
 * Not Working
-  * Dual SIM (Maybe working. Not tested.)
   * Video recording
   * Video en/decoding
-  * MTP (ADB is working)
 
 * Compilation
 

@@ -30,6 +30,11 @@ PRODUCT_PACKAGES += \
     audio_policy.default
 
 PRODUCT_PACKAGES += \
+    lib_driver_cmd_mt66xx \
+    wpa_supplicant \
+    hostapd
+
+PRODUCT_PACKAGES += \
     libbt-vendor
 
 PRODUCT_PACKAGES += \

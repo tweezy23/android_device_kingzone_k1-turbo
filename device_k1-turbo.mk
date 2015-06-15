@@ -1,4 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
@@ -17,45 +18,67 @@ endif
 PRODUCT_PACKAGES += \
     libxlog
 
+# Lights
 PRODUCT_PACKAGES += \
     lights.mt6592
 
+# Audio
 PRODUCT_PACKAGES += \
-    audio.r_submix.default
-
-PRODUCT_PACKAGES += \
-    audio.primary.mt6592
-
-PRODUCT_PACKAGES += \
+    audio.r_submix.default \
+    audio.primary.mt6592 \
     audio_policy.default
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profile.xml \
+    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
+# Wifi
 PRODUCT_PACKAGES += \
-    lib_driver_cmd_mt66xx \
+    libwpa_client \
+    hostapd \
+    dhcpcd.conf \
     wpa_supplicant \
-    hostapd
+    wpa_supplicant.conf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
 
+# Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor
 
+# GSM
 PRODUCT_PACKAGES += \
     gsm0710muxd
 
+# GPS
 PRODUCT_COPY_FILES += \
-    device/kingzone/k1_turbo/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-    device/kingzone/k1_turbo/configs/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl
+     $(LOCAL_PATH)/configs/agps_profiles_conf.xml:system/etc/agps_profiles_conf.xml
 
+# Keylayout
 PRODUCT_COPY_FILES += \
-    device/kingzone/k1_turbo/audio/audio_policy.conf:system/etc/audio_policy.conf
+    $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
+    $(LOCAL_PATH)/configs/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl
 
+# Thermal
 PRODUCT_COPY_FILES += \
-    device/kingzone/k1_turbo/rootdir/fstab.mt6592:root/fstab.mt6592 \
-    device/kingzone/k1_turbo/rootdir/init.mt6592.rc:root/init.mt6592.rc \
-    device/kingzone/k1_turbo/rootdir/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc \
-    device/kingzone/k1_turbo/rootdir/init.mt6592.usb.rc:root/init.mt6592.usb.rc \
-    device/kingzone/k1_turbo/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab \
-    device/kingzone/k1_turbo/rootdir/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
+     $(LOCAL_PATH)/configs/thermal.conf:system/etc/.tp/thermal.conf \
+     $(LOCAL_PATH)/configs/.ht120.mtc:system/etc/.tp/.ht120.mtc \
+     $(LOCAL_PATH)/configs/thermal.off.conf:system/etc/.tp/thermal.off.conf \
+     $(LOCAL_PATH)/configs/thermalstress.cfg:system/etc/.tp/thermalstress.cfg
+
+# Ramdisk
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/fstab.mt6592:root/fstab.mt6592 \
+    $(LOCAL_PATH)/rootdir/init.mt6592.rc:root/init.mt6592.rc \
+    $(LOCAL_PATH)/rootdir/init.recovery.mt6592.rc:root/init.recovery.mt6592.rc \
+    $(LOCAL_PATH)/rootdir/init.mt6592.usb.rc:root/init.mt6592.usb.rc \
+    $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab \
+    $(LOCAL_PATH)/rootdir/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
     $(LOCAL_KERNEL):kernel
 
+# Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -71,9 +94,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
-PRODUCT_COPY_FILES += \
-    device/kingzone/k1_turbo/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    device/kingzone/k1_turbo/configs/media_profiles.xml:system/etc/media_profile.xml
+# USB
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -93,5 +116,8 @@ $(call inherit-product, build/target/product/full.mk)
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_k1_turbo
 PRODUCT_DEVICE := k1_turbo
+
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)

@@ -7,11 +7,11 @@
   * Audio
   * Sensors
   * Camera (photo recording)
-  * GPS (not completely tested)
   * NFC
   * OTG
 
 * Not Working
+  * GPS
   * Video recording
   * Video en/decoding
 

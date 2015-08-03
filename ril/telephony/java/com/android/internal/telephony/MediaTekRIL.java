@@ -19,6 +19,8 @@ package com.android.internal.telephony;
 import static com.android.internal.telephony.RILConstants.*;
 
 import android.content.Context;
+import android.net.LocalSocket;
+import android.net.LocalSocketAddress;
 import android.os.AsyncResult;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -32,6 +34,9 @@ import android.telephony.SignalStrength;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import com.android.internal.telephony.uicc.IccRecords;
 import com.android.internal.telephony.uicc.UiccController;

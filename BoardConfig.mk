@@ -1,9 +1,14 @@
 # inherit from the proprietary version
 -include vendor/kingzone/k1_turbo/BoardConfigVendor.mk
 
+# GPS
+TARGET_SPECIFIC_HEADER_PATH := device/kingzone/k1_turbo/include
+
+# Platform
 TARGET_BOARD_PLATFORM := mt6592
 TARGET_NO_BOOTLOADER := true
 
+# Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
@@ -11,11 +16,13 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_CPU_VARIANT := cortex-a7
 
+# Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := mt6592
 
 TARGET_USERIMAGES_USE_EXT4:=true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
+# Kernel
 BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048

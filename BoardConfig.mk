@@ -35,8 +35,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 5452595200
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/kingzone/k1_turbo/kernel
-BOARD_CUSTOM_BOOTIMG_MK := device/kingzone/k1_turbo/bootimg.mk
-BOARD_MKBOOTIMG_ARGS := --board 1419997733
+BOARD_CUSTOM_MKBOOTIMG := mkmtkbootimg
+BOARD_MKBOOTIMG_ARGS := --base 0x10000000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --board 1419997733
 
 TARGET_KMODULES := true
 

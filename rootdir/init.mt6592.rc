@@ -560,16 +560,21 @@ service mc64xxd /system/bin/mc64xxd
 service agpsd /system/bin/mtk_agpsd
     class main
     socket agpsd stream 660 gps system
-    socket agpsd2 stream 660 gps system
-    socket agpsd3 stream 660 gps system
+    socket agpsd2 stream 660 system inet
+    socket agpsd3 stream 660 system inet
     user gps
-    group gps ccci inet sdcard_r sdcard_rw misc
+    group gps inet sdcard_r sdcard_rw misc radio
+
+service wifi2agps /system/bin/wifi2agps
+    class main
+    user wifi
+    group gps inet
 
 service mnld /system/xbin/mnld
+    class main
     user gps
-    group nvram gps inet misc sdcard_rw sdcard_r media_rw
+    group system gps inet misc sdcard_rw sdcard_r media_rw
     socket mnld stream 660 gps system
-    disabled
 
 
 # virtual sdcard daemon running as media_rw (1023)

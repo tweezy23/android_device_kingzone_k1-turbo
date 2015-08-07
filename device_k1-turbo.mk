@@ -78,7 +78,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab \
     $(LOCAL_PATH)/rootdir/ueventd.mt6592.rc:root/ueventd.mt6592.rc \
     $(LOCAL_PATH)/rootdir/sbin/busybox:root/sbin/busybox \
-    $(LOCAL_PATH)/rootdir/custom_init:root/custom_init \
     $(LOCAL_KERNEL):kernel
 
 # Permissions

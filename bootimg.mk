@@ -26,19 +26,23 @@ $(INSTALLED_KERNEL_TARGET).mtk.header: $(INSTALLED_KERNEL_TARGET)
 $(INSTALLED_KERNEL_TARGET).mtk: $(INSTALLED_KERNEL_TARGET).mtk.header
 	$(call pretty,"Adding MTK header to kernel.")
 	cat $(INSTALLED_KERNEL_TARGET) > $@
-
-$(INSTALLED_RAMDISK_TARGET).mtk.header: $(INSTALLED_RAMDISK_TARGET)
-	size=$$($(call get-file-size,$(INSTALLED_RAMDISK_TARGET))); \
-		$(call make_header, $$((size)), "ROOTFS", $@)
-$(INSTALLED_RAMDISK_TARGET).mtk: $(INSTALLED_RAMDISK_TARGET).mtk.header
-	$(call pretty,"Adding MTK header to ramdisk.")
+	
+INSTALLED_RAMDISK_TARGET := $(BUILT_RAMDISK_TARGET)
+$(INSTALLED_RAMDISK_TARGET): $(MKBOOTFS) $(INTERNAL_RAMDISK_FILES) | $(MINIGZIP)
+	$(call pretty,"Target ram disk: $@")
 	cmp -s device/kingzone/k1_turbo/rootdir/custom_init out/target/product/k1_turbo/root/init; \
 	RETVAL=$$?; \
 	if [ $$RETVAL -eq 1 ]; then \
 		mv out/target/product/k1_turbo/root/init out/target/product/k1_turbo/root/init2; \
 		cp device/kingzone/k1_turbo/rootdir/custom_init out/target/product/k1_turbo/root/init; \
 	fi
-	
+	$(hide) $(MKBOOTFS) $(TARGET_ROOT_OUT) | $(MINIGZIP) > $@
+
+$(INSTALLED_RAMDISK_TARGET).mtk.header: $(INSTALLED_RAMDISK_TARGET)
+	size=$$($(call get-file-size,$(INSTALLED_RAMDISK_TARGET))); \
+		$(call make_header, $$((size)), "ROOTFS", $@)
+$(INSTALLED_RAMDISK_TARGET).mtk: $(INSTALLED_RAMDISK_TARGET).mtk.header
+	$(call pretty,"Adding MTK header to ramdisk.")
 	cat $(INSTALLED_RAMDISK_TARGET).mtk.header $(INSTALLED_RAMDISK_TARGET) \
 		> $@
 

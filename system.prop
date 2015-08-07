@@ -2,7 +2,7 @@
 # system.prop for kingzone k1 turbo
 #
 service.adb.root=1
-ro.sf.lcd_density=320
+ro.sf.lcd_density=440
 wifi.interface=wlan0
 wifi.tethering.interface=ap0
 ro.nfc.port=I2C

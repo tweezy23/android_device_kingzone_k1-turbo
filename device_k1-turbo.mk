@@ -16,9 +16,6 @@ else
 endif
 
 PRODUCT_PACKAGES += \
-    mkmtkbootimg
-
-PRODUCT_PACKAGES += \
     libxlog
 
 # Lights

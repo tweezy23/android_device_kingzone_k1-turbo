@@ -559,7 +559,7 @@ service mc64xxd /system/bin/mc64xxd
 #
 #
 
-service agpsd /system/xbin/strace /system/bin/mtk_agpsd
+service agpsd /system/bin/mtk_agpsd
     class main
     socket agpsd stream 660 gps system
     socket agpsd2 stream 660 gps system

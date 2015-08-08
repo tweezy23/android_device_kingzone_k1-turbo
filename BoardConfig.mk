@@ -37,6 +37,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_PREBUILT_KERNEL := device/kingzone/k1_turbo/kernel
 BOARD_CUSTOM_BOOTIMG_MK := device/kingzone/k1_turbo/bootimg.mk
 BOARD_MKBOOTIMG_ARGS := --board 1419997733
+BOARD_CUSTOM_BOOTIMG := true
 
 TARGET_KMODULES := true
 

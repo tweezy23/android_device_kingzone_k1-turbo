@@ -178,11 +178,6 @@ on init
     # Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
 
-    # VideoCodec
-    mknod /dev/Vcodec c 160 0
-    chmod 0660 /dev/Vcodec
-    chown system media /dev/Vcodec
-
     # MJC
     chmod 0660 /dev/MJC
     chown system media /dev/MJC
@@ -292,8 +287,9 @@ on post-fs
     chmod 0660 /dev/wmtWifi
     chown system system /dev/wmtWifi
 
+	# VideoCodec
     exec /system/xbin/mknod /dev/Vcodec c 160 0
-    chmod 0660 /dev/Vcodec
+    chmod 0666 /dev/Vcodec
     chown system media /dev/Vcodec
 
     # for ppp options file

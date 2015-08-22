@@ -46,9 +46,6 @@ on init
     chown media media /dev/ccci_pcm_tx
     chmod 0660 /dev/ccci_pcm_tx
 
-    chown root system /dev/devmap
-    chmod 0440 /dev/devmap
-
     chown bluetooth radio /dev/ttyGS2
     chmod 0660 /dev/ttyGS2
     chown system radio /dev/ttyGS3
@@ -287,10 +284,15 @@ on post-fs
     chmod 0660 /dev/wmtWifi
     chown system system /dev/wmtWifi
 
-	# VideoCodec
+    # VideoCodec
     exec /system/xbin/mknod /dev/Vcodec c 160 0
     chmod 0666 /dev/Vcodec
     chown system media /dev/Vcodec
+	
+    # devmap
+    exec /system/xbin/mknod /dev/devmap c 196 0
+    chmod 0444 /dev/devmap
+    chown root system /dev/devmap
 
     # for ppp options file
     mkdir /data/misc/ppp 0770 bluetooth net_bt

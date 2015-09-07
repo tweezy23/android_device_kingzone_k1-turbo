@@ -111,6 +111,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     Torch
+	
+# Set default player to AwesomePlayer
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.use-awesome=true
 
 $(call inherit-product, build/target/product/full.mk)
 

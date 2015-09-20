@@ -115,8 +115,18 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
+# Torch
 PRODUCT_PACKAGES += \
     Torch
+
+# FM Radio
+PRODUCT_PACKAGES += \
+    FMRadio \
+    FmRadioTrampoline
+
+# Smart Cover
+PRODUCT_PACKAGES += \
+    SmartCover
 	
 # Set default player to AwesomePlayer
 PRODUCT_PROPERTY_OVERRIDES += \

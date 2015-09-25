@@ -237,11 +237,6 @@ on init
     chmod 0770 /sys/power/tuxonice
     chmod 0220 /sys/power/tuxonice/do_hibernate
 
-    # FM Radio device node
-    mknod /dev/fm     c 193 0;
-    chmod 0660 /dev/fm
-    chown system media /dev/fm
-
     # TV-out
     chmod 0664 /dev/TV-out
 
@@ -293,6 +288,11 @@ on post-fs
     exec /system/xbin/mknod /dev/devmap c 196 0
     chmod 0444 /dev/devmap
     chown root system /dev/devmap
+
+    # FM Radio device node
+    exec /system/xbin/mknod /dev/fm c 193 0
+    chmod 0777 /dev/fm
+    chown system media /dev/fm
 
     # for ppp options file
     mkdir /data/misc/ppp 0770 bluetooth net_bt

@@ -122,7 +122,13 @@ PRODUCT_PACKAGES += \
 # FM Radio
 PRODUCT_PACKAGES += \
     FMRadio \
-    FmRadioTrampoline
+    libfmjni \
+    libfmmt6620 \
+    libfmmt6628 \
+    libfmmt6627 \
+    libfmmt6630 \
+    libfmcust \
+    libmtkplayer
 
 # Smart Cover
 PRODUCT_PACKAGES += \

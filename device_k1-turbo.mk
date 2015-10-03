@@ -24,9 +24,11 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.r_submix.default \
     audio.primary.mt6592 \
-    audio_policy.default
+    audio_policy.default \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
@@ -103,12 +105,17 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
+    persist.sys.usb.config=mtp,adb
 
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
+    nfcstackp \
+    libmtknfc_dynamic_load_jni \
+    libnfc_mt6605_jni \
+    Nfc \
     Tag
+
 PRODUCT_COPY_FILES += \
     packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \

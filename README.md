@@ -6,13 +6,11 @@
   * Bluetooth
   * Audio
   * Sensors
-  * Camera (photo recording)
+  * Camera (photo and video recording)
   * GPS
   * NFC
   * OTG
-
-* Not Working
-  * Video recording
+  * Tethering (Wifi, Bluetooth and USB)
 
 * Compilation
 
@@ -22,7 +20,7 @@
         
         # source build/envsetup.sh
         
-        # brunch cm_k1_turbo-eng
+        # brunch cm_k1_turbo-userdebug
 
 # MTK
 

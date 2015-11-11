@@ -105,7 +105,7 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp,adb
+    persist.sys.usb.config=mtp
 
 # NFC
 PRODUCT_PACKAGES += \

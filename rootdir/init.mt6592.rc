@@ -272,8 +272,6 @@ on post-fs-data
     chown system system /dev/mt6605
     mkdir /data/nfc_socket 0771 nfc radio
 
-    start adbd
-
 on post-fs
     exec /system/xbin/mknod /dev/wmtWifi c 153 0
     chmod 0660 /dev/wmtWifi

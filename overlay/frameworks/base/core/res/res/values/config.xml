@@ -127,12 +127,6 @@
 	<item>255</item>
     </integer-array>
 
-    <!-- Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">4</integer>
-
-    <!-- Whether UI for multi user should be shown -->
-    <bool name="config_enableMultiUserUI">true</bool>
-
     <bool name="config_user_notification_of_restrictied_mobile_access">false</bool>
 
     <!-- Performance profiles -->

@@ -51,7 +51,8 @@ PRODUCT_PACKAGES += \
 
 # GSM
 PRODUCT_PACKAGES += \
-    gsm0710muxd
+    gsm0710muxd \
+    gsm0710muxdmd2
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -143,7 +144,7 @@ PRODUCT_PACKAGES += \
 	
 # Set default player to AwesomePlayer
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.use-awesome=true
+    persist.sys.media.use-awesome=true
 
 $(call inherit-product, build/target/product/full.mk)
 

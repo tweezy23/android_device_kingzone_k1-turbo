@@ -96,7 +96,7 @@ Only the three quirks included above are recognized at this point:
 
         <!-- ffmpeg video codecs -->
         <MediaCodec name="OMX.ffmpeg.h263.decoder" type="video/3gpp">
-            <Limit name="size" min="2x2" max="2048x2048" />
+            <Limit name="size" min="2x2" max="352x288" />
             <Limit name="alignment" value="2x2" />
             <Feature name="adaptive-playback" />
         </MediaCodec>

@@ -143,6 +143,10 @@ PRODUCT_PACKAGES += \
 # Smart Cover
 PRODUCT_PACKAGES += \
     SmartCover
+
+# Camera
+PRODUCT_PACKAGES += \
+    Snap
 	
 # Set default player to AwesomePlayer
 PRODUCT_PROPERTY_OVERRIDES += \

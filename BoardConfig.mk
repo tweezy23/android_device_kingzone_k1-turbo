@@ -87,6 +87,9 @@ BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/kingzone/k1_turbo/bluetooth
 
+# Sensors
+TARGET_NO_SENSOR_PERMISSION_CHECK := true
+
 # CWM
 TARGET_RECOVERY_FSTAB := device/kingzone/k1_turbo/rootdir/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -110,10 +113,3 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_
 
 BOARD_SEPOLICY_DIRS := \
        device/kingzone/k1_turbo/sepolicy
-
-BOARD_SEPOLICY_UNION := \
-       device.te \
-       app.te \
-       system.te \
-       netd.te \
-       file_contexts

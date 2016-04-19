@@ -140,10 +140,6 @@ PRODUCT_PACKAGES += \
     libfmcust \
     libmtkplayer
 
-# Smart Cover
-PRODUCT_PACKAGES += \
-    SmartCover
-
 # Camera
 PRODUCT_PACKAGES += \
     Snap

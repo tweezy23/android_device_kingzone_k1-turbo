@@ -1,23 +1,23 @@
 import init.mt6592.usb.rc
 import init.modem.rc
 
+on charger
+    mount ext4 /emmc@android /system ro wait
+    start drvbd
+    start ipod
+    start servicemanager
+
+    # disable USB
+    write /sys/devices/platform/mt_usb/cmode 0
+
 on init
-    export LD_PRELOAD /system/lib/libxlog.so
-    export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
+    export LD_PRELOAD "libxlog.so"
 
-    mkdir /storage/sdcard0 0700 root root
-    mkdir /storage/sdcard1 0700 root root
+    # By default, primary storage is physical
+    setprop ro.vold.primary_physical 1
 
-    symlink /storage/sdcard0 /sdcard
-    symlink /storage/sdcard0 /mnt/sdcard
-
-    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-
-    # USB OTG
-    mkdir /storage/usbotg 0700 root root
-    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
 
     chown system graphics /dev/ion
     chmod 0644 /dev/ion
@@ -62,9 +62,6 @@ on init
     chmod 0660 /dev/uibc
 
     # GPS
-    chmod 0666 /dev/gps
-    chmod 0660 /dev/stpgps
-    chown gps gps /dev/stpgps
     chown gps gps /sys/class/gpsdrv/gps/pwrctl
     chown gps gps /sys/class/gpsdrv/gps/suspend
     chown gps gps /sys/class/gpsdrv/gps/state
@@ -240,7 +237,7 @@ on init
     # TV-out
     chmod 0664 /dev/TV-out
 
-    #H DMI
+    # HDMI
     chown meida system /dev/hdmitx
     chmod 0664 /dev/hdmitx
 
@@ -272,6 +269,12 @@ on post-fs-data
     chown system system /dev/mt6605
     mkdir /data/nfc_socket 0771 nfc radio
 
+    # GPS
+    mkdir /data/agps_supl 0771 gps system
+    mkdir /data/gps_mnl 0771 gps system
+
+    mkdir /data/misc/gps 0770 gps gps
+
 on post-fs
     exec /system/xbin/mknod /dev/wmtWifi c 153 0
     chmod 0660 /dev/wmtWifi
@@ -298,6 +301,12 @@ on post-fs
     exec /system/xbin/mknod /dev/stpwmt c 190 0
     exec /system/xbin/mknod /dev/stpgps c 191 0
     exec /system/xbin/mknod /dev/stpbt  c 192 0
+
+    # GPS
+    chmod 0666 /dev/gps
+    chown system gps /dev/gps
+    chmod 0660 /dev/stpgps
+    chown gps gps /dev/stpgps
 
     # BT
     chmod 0660 /dev/stpbt
@@ -337,12 +346,8 @@ on fs
     mkdir /protect_s 0771 system system
 
     mount_all /fstab.mt6592
-    #setprop ro.crypto.fuse_sdcard true
 
     write /proc/bootprof "INIT:NAND:Mount_END"
-
-    mkdir /data/agps_supl 0771 gps system
-    mkdir /data/gps_mnl 0771 gps system
 
 on property:wlan.driver.status=ok
 	write /dev/wmtWifi "1"
@@ -403,8 +408,8 @@ service iprenew_p2p /system/bin/dhcpcd -n
 
 service drvbd /system/bin/drvbd
     class main
-    user system
-    group system
+    user root
+    group root
 
 service nvram_daemon /system/bin/nvram_daemon
     class main
@@ -583,17 +588,11 @@ service BGW /system/xbin/BGW
     class main
     oneshot
 
-# virtual sdcard daemon running as media_rw (1023)
-service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard0 /storage/sdcard0
-    class late_start
-    disabled
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
-    class late_start
-    disabled
-service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbotg /storage/usbotg
-    class late_start
-    disabled
-
+# Offline charging
+service ipod /system/bin/ipod
+    user root
+    group root
+    class ipo
 
 # CM Performance Profiles
 
